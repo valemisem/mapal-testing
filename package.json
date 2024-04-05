@@ -1,0 +1,16 @@
+{
+  "name": "mapal-testing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "npx cypress open",
+    "cy:run": "npx cypress run --spec 'cypress/e2e/1-getting-started/erifier_header.cy.js' "
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1",
+    "cypress": "^13.7.2"
+  }
+}
