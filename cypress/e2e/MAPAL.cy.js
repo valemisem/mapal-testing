@@ -1,6 +1,7 @@
 import { faker } from "@faker-js/faker";
+const partnerPage = require("../fixtures/pages/partnerPage.json");
 
-describe("integration test", () => {
+describe("MAPAL website", () => {
   let partnerName = faker.person.firstName();
   let partnerSurname = faker.person.lastName();
   let partnerEmail = faker.internet.email();
@@ -9,13 +10,13 @@ describe("integration test", () => {
   it("mapal and partners, UI", () => {
     cy.visit("/company/partners");
     cy.get("p > .btn").click();
-    cy.get("#clickdimensionsForm").should("exist"); // assertion 2
-    cy.get("#f_3d8193bd7376eb11a81200224880bcd1").type(partnerName);
-    cy.get("#f_ad75e7d67376eb11a81200224880bcd1").type(partnerSurname);
-    cy.get("#f_9ca840907376eb11a81200224880bcd1").type(partnerEmail);
-    cy.get("#f_1855cbb17576eb11a81200224880bcd1").type(partnerNumber);
-    cy.get("#f_aef232c8d87feb11a812000d3a2ac22b").type(partnerMessage);
-    cy.get("#btnSubmit").click();
+    cy.get(partnerPage.form).should("exist"); // assertion 2
+    cy.get(partnerPage.name).type(partnerName);
+    cy.get(partnerPage.surname).type(partnerSurname);
+    cy.get(partnerPage.EMAIL).type(partnerEmail);
+    cy.get(partnerPage.number).type(partnerNumber);
+    cy.get(partnerPage.message).type(partnerMessage);
+    cy.get(partnerPage.mainButton).click();
     cy.contains("This field is required. Please enter a value.").should(
       "exist"
     );
@@ -38,6 +39,10 @@ describe("integration test", () => {
       url: `/login`,
     }).then((response) => {
       expect(response.status).to.eq(200);
+
+      const contentType = response.headers["content-type"];
+      expect(contentType).to.exist;
+      expect(contentType).to.include("text/html; charset=utf-8");
     });
   });
 });

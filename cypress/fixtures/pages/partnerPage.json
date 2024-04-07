@@ -1,0 +1,9 @@
+{
+  "form": "#clickdimensionsForm",
+  "name": "#f_3d8193bd7376eb11a81200224880bcd1",
+  "surname": "#f_ad75e7d67376eb11a81200224880bcd1",
+  "EMAIL": "#f_9ca840907376eb11a81200224880bcd1",
+  "number": "#f_1855cbb17576eb11a81200224880bcd1",
+  "message": "#f_aef232c8d87feb11a812000d3a2ac22b",
+  "mainButton": "#btnSubmit"
+}
